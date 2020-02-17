@@ -8,8 +8,6 @@
 
 require 'faker'
 
-
-
 10.times do
   email_ = Faker::Books::Lovecraft.deity + "@yopmail.com"
   User.create(
@@ -46,3 +44,9 @@ puts "Events created : #{Event.count}, expected : 2"
   )
 end
 puts "Participations created : #{Participation.count}, expected : 8"
+puts "Email\n"
+puts "Utilisateurs : \n"
+User.all.each { |user| puts user.email }
+puts "**************************************************************"
+puts "\nAdministrateurs : \n"
+Participation.all.each { |participation| puts participation.event.administrator.email }
