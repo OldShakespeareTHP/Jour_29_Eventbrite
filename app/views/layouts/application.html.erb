@@ -10,6 +10,42 @@
   </head>
 
   <body>
+    <header>
+
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+
+      <nav>
+        <ul>
+          <li><a href='#'>Accueil</a></li>
+          <li><a href='#'>Creer un evenement</a></li>
+          <% if user_signed_in? %>
+            <li>
+              <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Action
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="/users/sign_up">S'inscrire</a>
+                  <a class="dropdown-item" href="/users/sign_in">Se connecter</a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Action
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Mon profil</a>
+                  <a class="dropdown-item" href="/users/sign_out">Se déconnecter</a>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
