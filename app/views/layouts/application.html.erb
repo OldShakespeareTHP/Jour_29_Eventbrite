@@ -17,7 +17,7 @@
 
       <nav>
         <ul>
-          <li><a href='#'>Accueil</a></li>
+          <%= link_to "Accueil", root_path%>
           <li><a href='#'>Creer un evenement</a></li>
           <% if !user_signed_in? %>
             <li>
