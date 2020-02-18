@@ -1,5 +1,5 @@
 class Participation < ApplicationRecord
-  belongs_to :guest, class_name: "User"
+  belongs_to :user
   belongs_to :event
 
   after_create :welcome_send

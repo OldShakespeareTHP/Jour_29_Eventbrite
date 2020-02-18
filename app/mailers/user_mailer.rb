@@ -10,7 +10,7 @@ class UserMailer < ApplicationMailer
   def inform_admin_for_new_guest(participation)
     @event = participation.event
     @admin = @event.administrator
-    @guest = participation.guest
+    @guest = participation.user
 
     mail(to: @admin.email, subject: "Nouvel inscrit a l\evenement #{@event.title}")
   end

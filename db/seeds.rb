@@ -9,13 +9,14 @@
 require 'faker'
 
 10.times do
-  email_ = Faker::Books::Lovecraft.deity + "@yopmail.com"
+  email_ = Faker::Games::Pokemon.unique.name + "@yopmail.com"
   User.create(
      first_name: Faker::Name.first_name,
      last_name: Faker::Name.last_name,
      description: Faker::Books::Lovecraft.sentence(word_count: 10),
-     email: email_
-    )
+     email: email_,
+     password: "123456"
+     )
 end
 puts "Users created : #{User.count}, expected : 10"
 
@@ -35,11 +36,12 @@ puts "Events created : #{Event.count}, expected : 2"
 
 8.times do
   event_ = Event.all.sample
+  # without_guest = User.all - Event.administrator
   while (event_.administrator == (guest_ = User.all.sample))
-  end
+  end 
 
   Participation.create(
-    guest: guest_,
+    user: guest_,
     event: event_
   )
 end

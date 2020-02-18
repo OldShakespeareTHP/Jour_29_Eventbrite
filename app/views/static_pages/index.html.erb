@@ -5,17 +5,17 @@
 
 
 <section class="card-columns">
-  <% @events.each do%>
+  <% @events.each do |event| %>
     <div class="card">
       <img class="card-img-top" src="..." alt="Card image cap">
       <div class="card-body">
         <div class="card-text">
         <!-- TODO: Reperage de la location de l'utilisateur -->
         <!-- TODO: Possibilite de sauvegard l'evenement dans "mes favoris" -->
-          <%= @event.title %>
-          <%= @event.start_date %>
-          <%= @event.start_date %>
-          <%= @event.location %>
+          <%= event.title %>
+          <%= event.start_date %>
+          <%= event.start_date %>
+          <%= event.location %>
         </div>
       </div>
     </div>

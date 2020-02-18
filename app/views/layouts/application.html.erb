@@ -16,22 +16,56 @@
       <p class="alert"><%= alert %></p>
 
       <nav>
+
+
+        <ul class="list-group list-group-horizontal">
+
+              <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Action
+                </button>
+          <div class="dropdown-menu">
+
+             <%= form_tag url_for(action: 'create') do %>
+         <h1>Sign up</h1>
+      <!--TODO: Rendre innacessible lorsque connecté-->
+         <%= label_tag :first_name%>
+         <%= text_field_tag :first_name %>
+
+         <%= label_tag :last_name%>
+         <%= text_field_tag :last_name %>
+
+         <%= label_tag :city%>
+         <%= text_field_tag :city_name %>
+
+         <%= label_tag :email%>
+         <%= text_field_tag :email %>
+
+         <%= label_tag :password%>
+         <%= password_field_tag :password%>
+
+         Se souvenir de moi : <%= check_box_tag :accept, '1', true %> ?
+
+         <%= submit_tag "Sign up"%>
+          </div>
+          <% end %>
+
       <!-- TODO: Skin de la navbar, navbar fixed -->
-        <ul>
+        
           <%= link_to "Accueil", root_path%>
           <li><a href='#'>Creer un evenement</a></li>
           <% if !user_signed_in? %>
             <li>
               <div class="btn-group">
-                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Action
                 </button>
                 <div class="dropdown-menu">
                   <%# <a class="dropdown-item" href="/users/sign_up">S'inscrire</a> %>
-                  <%= link_to "S'inscrire", new_user_session_path %>
+                  <div class="dropdown-item"><%= link_to "S'inscrire", new_user_registration_path %></div>
 
                   <%# <a class="dropdown-item" href="/users/sign_in">Se connecter</a> %>
-                  <%= link_to "Sign up", new_user_registration_path %>
+                  <div class="dropdown-item"><%= link_to "Sign up", new_user_session_path %></div>
                 </div>
               </div>
             </li>
@@ -43,12 +77,14 @@
                 </button>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="#">Mon profil</a>
+                      <%= link_to "Mon profil", user_path(current_user) %>
                   <%# <a class="dropdown-item" href="/users/sign_out">Se déconnecter</a> %>
                   <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %>
                 </div>
               </div>
             </li>
           <% end %>
+
         </ul>
       </nav>
     </header>

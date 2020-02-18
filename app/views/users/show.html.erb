@@ -1,0 +1,13 @@
+<section class="container">
+    <%= current_user.first_name %>
+    <%= current_user.last_name %>
+    <%= current_user.description %>
+    <%= current_user.email %>
+    <% unless current_user.administred_events.empty? %>
+      <% current_user.administred_events.each do |event| %>
+        <%= event.title %>
+        <!-- Lien vers la page de l'evenement -->
+        <% end %>
+    <% end %>
+    <%= link_to "Editer son mail/son mot de passe", edit_user_registration_path %>
+</section>

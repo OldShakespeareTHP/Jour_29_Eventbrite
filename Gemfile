@@ -67,3 +67,5 @@ gem 'dotenv-rails'
 gem 'sprockets-rails', '>= 2.3.2'
 gem 'bootstrap', '~> 4.4.1'
 gem 'devise'
+gem 'jquery-rails'
+

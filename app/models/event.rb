@@ -10,7 +10,9 @@ class Event < ApplicationRecord
   validates :price, numericality: { greater_than: 1, less_than: 1000 }
 
   has_many :participations
-  has_many :guest, :through => :participations
+  # has_many :guest, class_name: "User", foreign_key: "guest_id", :through => :participations
+  has_many :guest, :through => :participations, :source => :user
+
 
   belongs_to :administrator, class_name: 'User', foreign_key: 'administrator_id'
 
