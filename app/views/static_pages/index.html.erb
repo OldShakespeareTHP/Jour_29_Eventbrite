@@ -1,2 +1,23 @@
-<h1>StaticPages#index</h1>
-<p>Find me in app/views/static_pages/index.html.erb</p>
+<!-- TODO: Changer le skin du site -->
+<section class="jumbotron">
+  <!-- TODO: Image de fond-->
+</section>
+
+
+<section class="card-columns">
+  <% @events.each do%>
+    <div class="card">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <div class="card-text">
+        <!-- TODO: Reperage de la location de l'utilisateur -->
+        <!-- TODO: Possibilite de sauvegard l'evenement dans "mes favoris" -->
+          <%= @event.title %>
+          <%= @event.start_date %>
+          <%= @event.start_date %>
+          <%= @event.location %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</section>
