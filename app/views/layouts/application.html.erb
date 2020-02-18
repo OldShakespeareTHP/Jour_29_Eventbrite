@@ -19,18 +19,22 @@
         <ul>
           <li><a href='#'>Accueil</a></li>
           <li><a href='#'>Creer un evenement</a></li>
-          <% if user_signed_in? %>
+          <% if !user_signed_in? %>
             <li>
               <div class="btn-group">
                 <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Action
                 </button>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="/users/sign_up">S'inscrire</a>
-                  <a class="dropdown-item" href="/users/sign_in">Se connecter</a>
+                  <%# <a class="dropdown-item" href="/users/sign_up">S'inscrire</a> %>
+                  <%= link_to "S'inscrire", new_user_session_path %>
+
+                  <%# <a class="dropdown-item" href="/users/sign_in">Se connecter</a> %>
+                  <%= link_to "Sign up", new_user_registration_path %>
                 </div>
               </div>
             </li>
+          <% else %>
             <li>
               <div class="btn-group">
                 <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -38,7 +42,8 @@
                 </button>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="#">Mon profil</a>
-                  <a class="dropdown-item" href="/users/sign_out">Se déconnecter</a>
+                  <%# <a class="dropdown-item" href="/users/sign_out">Se déconnecter</a> %>
+                  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
                 </div>
               </div>
             </li>
