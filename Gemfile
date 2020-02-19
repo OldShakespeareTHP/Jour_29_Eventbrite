@@ -69,3 +69,4 @@ gem 'bootstrap', '~> 4.4.1'
 gem 'devise'
 gem 'jquery-rails'
 
+gem 'pry'

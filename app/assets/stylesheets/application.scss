@@ -14,3 +14,234 @@
 
  @import "bootstrap";
 
+ 
+ .link_white a:visited
+ {
+   color: white;
+ }
+ .link_white a:link
+ {
+  color: white;
+ }
+
+ .link_white a:active
+ {
+  color: white;
+ }
+
+ .link_white a:hover
+ {
+  color: white;
+ }
+ 
+ .link_white a
+ {
+   color: white;
+ }
+ 
+  a, a:hover, a:visited, a:active, a:link
+  {
+     color: black;
+     text-decoration-line: none;
+  }
+
+ .card-columns
+ {
+     display: inline-block;
+ }
+ 
+ .bg_navbar
+ {
+     background-color: black;
+     border-bottom: 3px inset #8A82E6;
+ 
+ }
+ 
+  html
+ {
+     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+     background-color: white;
+ }
+ 
+ .jumbotron_perso
+ {
+     background-image: url('/background_jumbotron.jpg');
+     background-repeat: no-repeat;
+     background-position: center;
+     background-size: cover;
+ }
+ 
+ #welcome_title
+ {
+     font-family: 'Dancing Script', cursive;
+     font-size: 200px;
+    //  color: black;
+     text-shadow: 0 0 10px #64A19D;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     width: 80%;
+     padding: 20px;
+     text-align: center;
+ }
+
+ 
+ body
+ {
+     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+ }
+ 
+ 
+ .section_gossips
+ {
+     padding: 20px;
+     margin: 0px;
+     display: flex;
+     justify-content: center;
+     background-color: white;
+ }
+ 
+ .team_and_page
+ {
+     padding: 20px;
+     margin: 0px;
+     display: flex;
+     justify-content: center;
+     background-color: white;
+ }
+ 
+ .my_border
+ {
+     border-bottom: 5px inset #8A82E6;
+     border-radius : 30px;
+ }
+
+ .border_dropdown
+ {
+    border-bottom: 5px inset #8A82E6;
+    border-radius : 20px;
+ }
+ 
+ .my_green
+ {
+     color: #64A19D;
+ }
+ 
+ .gossip_page
+ {
+     width: max-content;
+     padding: 20px;
+     background-color: white;
+ }
+ 
+ #test
+ {
+     display: flex;
+     justify-content: space-between;
+     flex-wrap: wrap;
+     max-height: 500px;
+     background-color: black;
+ }
+ 
+ .navbar
+ {
+     padding: 5px;
+     margin: 10px;
+     display: flex;
+     flex-direction: row;
+     justify-content: flex-end;
+     align-items: center;
+ }
+ 
+ nav > ul
+ {
+     list-style-type: none;
+     margin: 0px;
+     padding: 0px;
+     display: flex;
+ }
+ 
+ li
+ {
+     margin-left: 5px;
+     margin-right: 5px;
+ }
+ 
+ .center_li  
+ {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     border-radius: 5;
+ }
+ 
+ .cercle 
+ {
+     min-width: 20px;
+     min-height: 20px;
+     text-align: center;
+     border-radius: 100%;
+     background: black;
+ }
+ 
+ #card_gossip
+ {
+     display: flex;
+     align-items: center;
+     background-color: white;
+ }
+ 
+ 
+ #event
+ {
+     display: flex;
+     align-items: center;
+     justify-content: flex-start;
+     margin-left : 10px;
+     margin-right : 10px;
+ }
+ 
+ 
+ 
+ .formulaire_nouveau_gossip
+ {
+     display: flex;
+ 
+     height: min-content;
+     width: min-content;
+     background-color: white;
+ 
+ }
+ 
+ .link_thumb
+ {
+     z-index: 1000;
+ }
+ 
+ .zoom {
+     transition: transform .2s;
+     
+   }
+   
+   .zoom:hover {
+     -ms-transform: scale(1.3); /* \IE 9 */
+     -webkit-transform: scale(1.3); /* Safari 3-8 */
+     transform: scale(1.3); 
+     z-index: 10000000;
+   }
+ 
+ .fas:hover::before{
+     font-weight: 400;
+     content: "\f164";
+ 
+ }
+ 
+ 
+ .far:hover::before{
+     font-weight: 900;
+     content: "\f164";
+ }
+ 
+
+ 

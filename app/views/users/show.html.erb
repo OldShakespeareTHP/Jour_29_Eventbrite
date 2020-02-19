@@ -1,13 +1,22 @@
-<section class="container">
-    <%= current_user.first_name %>
-    <%= current_user.last_name %>
-    <%= current_user.description %>
-    <%= current_user.email %>
-    <% unless current_user.administred_events.empty? %>
-      <% current_user.administred_events.each do |event| %>
-        <%= event.title %>
-        <!-- Lien vers la page de l'evenement -->
+<section class="container mt-5 d-flex flex-column justify-content-between">
+  <div class="row mt-5 mb-5">
+    <div class="col-4"></div>
+    <div class="col-4 my_border d-flex flex-column align-items-center pt-5 pr-5 pl-5 pb-3">
+      <div>
+        Nom : <%= current_user.first_name %> <%= current_user.last_name %></div>
+        <div>Description: <%= current_user.description %></div>
+        <div>Email: <%= current_user.email %></div>
+        <button class="btn btn-sm btn-outline-dark mt-3"><%= link_to raw("Editer son mail/<br>son mot de passe"), edit_user_registration_path %></button>
+      </div>
+      <% unless current_user.administred_events.empty? %>
+      <div class="card-columns mt-5">
+        <% current_user.administred_events.each do |event| %>
+          <div class="card">
+            <div class="card-title text-center"><%= link_to event.title, event_path(event) %></div>
+            <div class="card-body"><%= event.description %></div>
+          </div>
         <% end %>
-    <% end %>
-    <%= link_to "Editer son mail/son mot de passe", edit_user_registration_path %>
+      <% end %>
+    </div>
+  </div>
 </section>

@@ -1,0 +1,17 @@
+<section class="container mt-5 d-flex flex-column justify-content-between">
+  <div class="row">
+  <div class="col-4"></div>
+  <div class="col-4 my_border d-flex flex-column align-items-center">
+    <div><h1><%= @event.title %></h1></div>
+    Description : <div><%= @event.description %></div>
+    <div><%= @event.guest.count %></div>
+    <div><%= @event.administrator.email %></div><br/>
+    <div class="d-flex flex-column align-items-start">
+    Date de début : <div><%= @event.start_date.strftime("%H:%M - %d-%m-%Y") %></div>
+    Date de fin : <div><%= end_date(@event).strftime("%H:%M - %d-%m-%Y")  %></div>
+    </div><br/>
+    Lieu : <div><%= @event.location %></div><br/>
+    Prix : <div><%= @event.price %></div>
+  </div>
+  </div>
+</section>

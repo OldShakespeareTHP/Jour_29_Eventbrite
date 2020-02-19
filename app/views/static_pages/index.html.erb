@@ -1,22 +1,60 @@
 <!-- TODO: Changer le skin du site -->
-<section class="jumbotron">
+<section class="jumbotron jumbotron_perso vh-100 ">
   <!-- TODO: Image de fond-->
 </section>
 
+<section class="d-flex flex-column align-items-center">
+  <% if user_signed_in? %>
+    <%= form_tag url_for(controller: events_path, action: 'create'), method: "post" do %>
+    <span class="text-center"><h1>Evénements</h1></span>
+    <ul class="list-group m-5">
+      <li>
+        <%= label_tag :start_date %>
+        <%= datetime_field_tag(name = "start_date", value = nil, options = {:min => Time.zone.now.strftime("%Y-%m-%dT%H:%M")}) %>
+      </li>
+      <li>
+        <%= label_tag :duration %>
+        <%= time_field_tag(name = "duration", value = "00:00", options = {:step => 5 * 60 }) %>
+      </li>
+      <li>
+        <%= label_tag :title %>
+        <%= text_field_tag(name = "title", value = nil, options = {:minlength => 5, :maxlength => 140}) %>
+      </li>
+      <li>
+        <%= label_tag :description %>
+        <%= text_field_tag(name = "description", value = nil, options = {:minlength => 20, :maxlength => 1000}) %>
+      </li>
+      <li>
+        <%= label_tag :price %>
+        <%= number_field_tag(name = "price", value = 0, options = {:min => 1, :max => 1000} )%>
+      </li>
+      <li>
+        <%= label_tag :location %>
+        <%= text_field_tag :location %>
+      </li>
+      <%= submit_tag "Créér l'évènement"%>
+    <ul>
+    </div>
+    <% end %>
+  <% end %>
+</section>
 
-<section class="card-columns">
+<section class="pr-5 pl-5 card-columns">
   <% @events.each do |event| %>
-    <div class="card">
+    <div class="card my_border zoom mt-4">
       <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <div class="card-text">
-        <!-- TODO: Reperage de la location de l'utilisateur -->
-        <!-- TODO: Possibilite de sauvegard l'evenement dans "mes favoris" -->
+      <div class="card-body m-2 p-2">
+      <div class="card-title text-center">
           <%= event.title %>
-          <%= event.start_date %>
-          <%= event.start_date %>
-          <%= event.location %>
-        </div>
+      </div>
+      <div class="card-text d-flex flex-column align-items-center">
+        <!-- TODO: Reperage de la location de l'utilisateur -->
+        <!-- TODO: Possibilite de sauvegarder l'evenement dans "mes favoris" -->
+        <!--TODO: Transformer la date en un format plus lisible avec le mois etc. -->
+        <div><%= event.start_date %></div>
+        <div><%= event.location %></div>
+       <a href="/events/<%=  event.id %>" class="stretched-link text-dark"></a>
+      </div>
       </div>
     </div>
   <% end %>

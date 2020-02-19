@@ -12,74 +12,70 @@
   <body>
     <header>
 
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-
-      <nav>
-
-
+      <nav class="bg_navbar fixed-top d-flex justify-content-between pl-1 pr-2">
+          <button type="button" class="btn link_white"><%= link_to "Accueil", root_path%></button>
         <ul class="list-group list-group-horizontal">
-
-              <div class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Action
-                </button>
-          <div class="dropdown-menu">
-
-             <%= form_tag url_for(action: 'create') do %>
-         <h1>Sign up</h1>
-      <!--TODO: Rendre innacessible lorsque connecté-->
-         <%= label_tag :first_name%>
-         <%= text_field_tag :first_name %>
-
-         <%= label_tag :last_name%>
-         <%= text_field_tag :last_name %>
-
-         <%= label_tag :city%>
-         <%= text_field_tag :city_name %>
-
-         <%= label_tag :email%>
-         <%= text_field_tag :email %>
-
-         <%= label_tag :password%>
-         <%= password_field_tag :password%>
-
-         Se souvenir de moi : <%= check_box_tag :accept, '1', true %> ?
-
-         <%= submit_tag "Sign up"%>
-          </div>
+          <% if user_signed_in? %>
+          <div class="btn-group dropleft">
+            <button type="button" class="btn text-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Creer evenement
+            </button>
+            <div class="dropdown-menu border_dropdown">
+            <%= form_tag url_for(controller: events_path, action: 'create'), method: "post" do %>
+            <span class="text-center"><h1>Evenement</h1></span>
+            <ul class="list-group m-5">
+              <li>
+                <%= label_tag :start_date %>
+                <%= datetime_field_tag(name = "start_date", value = nil, options = {:min => Time.zone.now.strftime("%Y-%m-%dT%H:%M")}) %>
+              </li>
+              <li>
+                <%= label_tag :duration %>
+                <%= time_field_tag(name = "duration", value = "00:00", options = {:step => 5 * 60 }) %>
+              </li>
+              <li>
+                <%= label_tag :title %>
+                <%= text_field_tag(name = "title", value = nil, options = {:minlength => 5, :maxlength => 140}) %>
+              </li>
+              <li>
+                <%= label_tag :description %>
+                <%= text_field_tag(name = "description", value = nil, options = {:minlength => 20, :maxlength => 1000}) %>
+              </li>
+              <li>
+                <%= label_tag :price %>
+                <%= number_field_tag(name = "price", value = 0, options = {:min => 1, :max => 1000} )%>
+              </li>
+              <li>
+                <%= label_tag :location %>
+                <%= text_field_tag :location %>
+              </li>
+              <%= submit_tag "Créér l'évènement"%>
+            <ul>
+            </div>
+            <% end %>
           <% end %>
-
-      <!-- TODO: Skin de la navbar, navbar fixed -->
-        
-          <%= link_to "Accueil", root_path%>
-          <li><a href='#'>Creer un evenement</a></li>
-          <% if !user_signed_in? %>
+          
+          <% unless user_signed_in? %>
             <li>
-              <div class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Action
+              <div class="btn-group dropleft">
+                <button type="button" class="btn text-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Menu
                 </button>
-                <div class="dropdown-menu">
-                  <%# <a class="dropdown-item" href="/users/sign_up">S'inscrire</a> %>
+                <div class="dropdown-menu border_dropdown">
                   <div class="dropdown-item"><%= link_to "S'inscrire", new_user_registration_path %></div>
 
-                  <%# <a class="dropdown-item" href="/users/sign_in">Se connecter</a> %>
                   <div class="dropdown-item"><%= link_to "Sign up", new_user_session_path %></div>
                 </div>
               </div>
             </li>
           <% else %>
             <li>
-              <div class="btn-group">
-                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Action
+              <div class="btn-group dropleft">
+                <button type="button" class="btn text-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Menu
                 </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Mon profil</a>
-                      <%= link_to "Mon profil", user_path(current_user) %>
-                  <%# <a class="dropdown-item" href="/users/sign_out">Se déconnecter</a> %>
-                  <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %>
+                <div class="dropdown-menu border_dropdown">
+                  <span class="dropdown-item" href="#"> <%= link_to "Mon profil", user_path(current_user) %> </span>
+                  <span class="dropdown-item"><%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %></span>
                 </div>
               </div>
             </li>
