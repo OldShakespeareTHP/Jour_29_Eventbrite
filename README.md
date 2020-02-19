@@ -1,7 +1,6 @@
-# **The Gossip Project, Facebook Style**
+# **Evenbrite**
 
-Genere un site affichant une liste de potins. Possible d'editer ou d'ajouter des potins, ainsi que de les commenter. Possible d'afficher l'ensemble des potins, les potins par ville, les commentaires des potins. Possible de liker les potins de differents endroits.
-Fait avec rails.
+Fait avec rails, en utilisant la gem 'devise'.
 
 ## :black_square_button: **Installation**
 
@@ -16,7 +15,7 @@ Fait avec rails.
 8. ```rails db:c```, si besoin pour lancer la console
 
 ## :black_square_button: Ouvrir la page suivante :
-[http://localhost:4567/](http://localhost:3000/)
+[http://localhost:3000/](http://localhost:3000/)
 
 ## :black_square_button: Acces au site sur Heroku :
 https://forejyeventbrite.herokuapp.com/
