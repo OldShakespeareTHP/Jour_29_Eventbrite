@@ -19,12 +19,6 @@ Fait avec rails, en utilisant la gem 'devise'.
 
 ## :black_square_button: Acces au site sur Heroku :
 https://forejyeventbrite.herokuapp.com/
-
-Et si necessaire pour Heroku :
-1. ```heroku restart```
-2. ```heroku pg:reset DATABASE (no need to change the DATABASE)```
-3. ```heroku run rails db:migrate```
-4. ```heroku run rake db:seed (if you have seed)```
  
 <details> <summary> A venir</summary>
  
