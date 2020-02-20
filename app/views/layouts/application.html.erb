@@ -53,7 +53,7 @@
             </div>
             <% end %>
           <% end %>
-          
+
           <% unless user_signed_in? %>
             <li>
               <div class="btn-group dropleft">
@@ -62,7 +62,6 @@
                 </button>
                 <div class="dropdown-menu border_dropdown">
                   <div class="dropdown-item"><%= link_to "S'inscrire", new_user_registration_path %></div>
-
                   <div class="dropdown-item"><%= link_to "Sign up", new_user_session_path %></div>
                 </div>
               </div>

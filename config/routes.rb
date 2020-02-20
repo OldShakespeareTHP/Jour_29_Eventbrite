@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
-  # get 'events/new'
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   root to: "static_pages#index" 
   devise_for :users
   resources :users, only: [:show]
   resources :events
-  # get 'static_pages/index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :events do
+    resources :participations, only: [:new, :create, :index]
+  end
+  resources :participations, only: [:new, :create, :index]
+
+  
+
 
 end

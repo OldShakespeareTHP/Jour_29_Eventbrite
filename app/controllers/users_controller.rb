@@ -11,5 +11,4 @@ class UsersController < ApplicationController
       redirect_to ("/"), :alert => "Vous n'avez pas les droits faire ca."
     end
   end
-
 end

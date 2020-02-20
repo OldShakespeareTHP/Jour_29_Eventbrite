@@ -1,0 +1,16 @@
+<section class="m-5 p-5 d-flex flex-column align-items-center">
+  <h2>Liste des invités de l'evenement <%= @event.title %></h2>
+  <div class="d-flex flex-column align-items-start">
+    <% @participation.each do |participation| %>
+      <div>
+        <%= participation.user.first_name %> <%= participation.user.last_name %>
+      </div>
+    <% end %>
+  </div>
+</section> 
+
+<section>
+  <%= link_to "Editer l'evenement", edit_event_path(@event) %>
+  <%= link_to "Supprimer l'evenement", event_path(@event), method: :delete, data: { confirm: 'Etes-vous certain de vouloir supprimer l\'evenement ?' } %>
+
+</section>

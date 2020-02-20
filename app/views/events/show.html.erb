@@ -1,17 +1,47 @@
-<section class="container mt-5 d-flex flex-column justify-content-between">
-  <div class="row">
-  <div class="col-4"></div>
-  <div class="col-4 my_border d-flex flex-column align-items-center">
+<section class="container mt-5 d-flex flex-column align-items-center">
+  <% if flash[:success].present? %>
+    <div class="text-center">
+      <div class="alert alert-success alert-dismissible" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <%= flash[:success]%>
+    </div>
+  <% elsif flash[:error].present? %>
+      </div>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <%= flash[:error] %>
+      </div>
+    <%end %>
+  <div class="mt-5 my_border d-flex flex-column align-items-center">
     <div><h1><%= @event.title %></h1></div>
     Description : <div><%= @event.description %></div>
-    <div><%= @event.guest.count %></div>
+    <div><%= @event.guests.count %></div>
     <div><%= @event.administrator.email %></div><br/>
     <div class="d-flex flex-column align-items-start">
     Date de début : <div><%= @event.start_date.strftime("%H:%M - %d-%m-%Y") %></div>
     Date de fin : <div><%= end_date(@event).strftime("%H:%M - %d-%m-%Y")  %></div>
     </div><br/>
     Lieu : <div><%= @event.location %></div><br/>
-    Prix : <div><%= @event.price %></div>
-  </div>
+    Prix : <div><%= @event.price %> €</div>
+
+    <% if current_user == @event.administrator%>
+      <%= link_to "Administrer l'evenement",  event_participations_path(@event), class: "btn btn-primary" %>
+    <% elsif @event.guests.include?(current_user) %>
+      <div class="m-2 p-1 border_violet">Vous etes inscrit à cet evenement.</div>
+    <% else %>
+      <%= form_tag event_participations_path(@event), action: ' create', method: 'post' do %>
+        <%= hidden_field_tag :id, @event.id %>
+        <div class="mb-3 text-black">
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-description="Paiement pour l'evenement"
+                data-amount="500"
+                data-locale="auto"
+                data-label="S'inscrire">
+          </script>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </section>
+

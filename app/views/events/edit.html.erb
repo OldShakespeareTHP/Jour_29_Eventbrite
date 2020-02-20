@@ -1,0 +1,41 @@
+<section>
+  <%# <%= form_tag url_for(controller: event_path(@event), action: 'update'), method: "patch" do %> %>
+    <%= form_tag url_for(action: 'update'), method: "patch" do %>
+
+    <span class="text-center"><h1>Editer l'evenement</h1></span>
+    <ul class="list-group m-5">
+      <li>
+        <%= label_tag :start_date %>
+        <%= datetime_field_tag(name = "start_date", value = @event.start_date.strftime("%Y-%m-%dT%H:%M"), options = {:min => Time.zone.now.strftime("%Y-%m-%dT%H:%M")}) %>
+      </li>
+      <li>
+        <%= label_tag :duration %>
+        <%= time_field_tag(name = "duration", value = @duration, options = {:step => 5 * 60 }) %>
+      </li>
+      <li>
+        <%= label_tag :title %>
+        <%= text_field_tag(name = "title", value = @event.title, options = {:minlength => 5, :maxlength => 140}) %>
+      </li>
+      <li>
+        <%= label_tag :description %>
+        <%= text_field_tag(name = "description", value = @event.description, options = {:minlength => 20, :maxlength => 1000}) %>
+      </li>
+      <li>
+        <%= label_tag :price %>
+        <%= number_field_tag(name = "price", value = @event.price, options = {:min => 1, :max => 1000} )%>
+      </li>
+      <li>
+        <%= label_tag :location %>
+        <%= text_field_tag(name = "location", value = @event.location) %>
+      </li>
+      <%= submit_tag "Changer l'évènement"%>
+    <ul>
+    </div>
+  <% end %>
+</section>
+
+<hr/>
+
+<section>
+  <%= link_to "Supprimer l'evenement", event_path(@event), method: :delete, data: { confirm: 'Etes-vous certain de vouloir supprimer l\'evenement ?' } %>
+</section>

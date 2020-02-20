@@ -70,3 +70,4 @@ gem 'devise'
 gem 'jquery-rails'
 
 gem 'pry'
+gem 'stripe'
