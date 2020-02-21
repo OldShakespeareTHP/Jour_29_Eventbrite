@@ -17,7 +17,6 @@ class EventsController < ApplicationController
       description: params[:description],
       price: params[:price].to_i,
       location: params[:location],
-      start_date: params[:start_date],
       administrator: current_user
     )
 
@@ -58,7 +57,6 @@ class EventsController < ApplicationController
       description: params[:description],
       price: params[:price].to_i,
       location: params[:location],
-      start_date: params[:start_date],
       administrator: current_user
       } 
     if event.update(attributes)
